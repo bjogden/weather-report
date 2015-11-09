@@ -68,32 +68,3 @@ for z in recipients:
 
     time.sleep(5) # so pywapi/google voice APIs aren't pinged too quickly
 
-
-
-############## old code ################
-#from messager import Messager
-
-# weather = pywapi.get_weather_from_weather_com('90048')
-
-# C * 9/5 + 32 = F && (F - 32) * (5/9) = C
-
-# curr_celsius_encoded = weather['current_conditions']['temperature']
-# curr_celsius = int(curr_celsius_encoded.encode('utf-8'))
-# curr_fah = tempmath.celsius_to_fahr(curr_celsius)
-
-# feels_like_c_encoded = weather["current_conditions"]["feels_like"]
-# feels_like_c = int(feels_like_c_encoded.encode("utf-8"))
-# feels_like_f = tempmath.celsius_to_fahr(feels_like_c)
-# curr_text = weather["current_conditions"]["text"].encode("utf-8")
-
-# location    = weather["location"]["name"].encode("utf-8")
-# soonest     = weather['forecasts'][0]
-# date        = soonest['date'].encode('utf-8')
-# day_text    = soonest['day']['text'].encode('utf-8')
-# high_c      = soonest['high'].encode('utf-8')
-# high        = tempmath.celsius_to_fahr(int(high_c))
-# low_c       = soonest['low'].encode('utf-8')
-# low         = tempmath.celsius_to_fahr(int(low_c))
-# night_text  = soonest['night']['text'].encode('utf-8')
-# sunrise     = soonest['sunrise'].encode('utf-8')
-# sunset      = soonest['sunset'].encode('utf-8')
