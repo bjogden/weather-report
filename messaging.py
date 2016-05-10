@@ -3,12 +3,12 @@ __author__ = "Bryce Ogden"
 from twilio.rest import TwilioRestClient
 from config import *
 
-class MessageMe(object):
+class Message(object):
 
     def __init__(self):
         # To find these visit https://www.twilio.com/user/account
-        ACCOUNT_SID = twilio_acct_sid
-        AUTH_TOKEN = twilio_auth_token
+        ACCOUNT_SID = TWILIO_ACCT_SID
+        AUTH_TOKEN = TWILIO_AUTH_TOKEN
         self.client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 
     def send_sms(self, num, text):
@@ -19,7 +19,7 @@ class MessageMe(object):
         message = self.client.messages.create(
             body = text, # optional
             to = num,
-            from_ = twilio_number
+            from_ = TWILIO_NUMBER
         )
         #print message.sid
 
@@ -33,6 +33,6 @@ class MessageMe(object):
         message = self.client.messages.create(
             body = text, # optional
             to = num,
-            from_ = twilio_number,
+            from_ = TWILIO_NUMBER,
             media_url = image_url
         )

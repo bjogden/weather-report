@@ -6,11 +6,11 @@ import pprint, time, datetime
 import logging, os
 import tempmath
 from config import *
-from tmessage import MessageMe
+from messaging import Message
 
 pp = pprint.PrettyPrinter(indent=4)
 
-log_file = log_path+'weather.log'
+log_file = "{}weather.log".format(LOG_PATH)
 logging.basicConfig(level=logging.INFO,
                     format="%(message)s",
                     filename=log_file,
@@ -21,15 +21,15 @@ year = now.strftime("%Y")
 
 count = 0
 
-m = MessageMe()
+m = Message()
 
-for z in recipients:
+for z in RECIPIENTS:
     count      += 1
     zipcode     = z
 
     weather     = pywapi.get_weather_from_weather_com(zipcode)
 
-    location    = weather["location"]["name"].encode("utf-8")
+    location    = weather['location']['name'].encode('utf-8')
     soonest     = weather['forecasts'][0]
 
     date        = soonest['date'].encode('utf-8')
@@ -42,8 +42,8 @@ for z in recipients:
     sunrise     = soonest['sunrise'].encode('utf-8')
     sunset      = soonest['sunset'].encode('utf-8')
 
-    # iterate recipients per zipcode
-    for i in recipients[z]:
+    # iterate RECIPIENTS per zipcode
+    for i in RECIPIENTS[z]:
         if i['notify']:
             text_message = ("""Good morning, %s!
         %s - high: %s""" % (i['name'], date, high))
@@ -57,7 +57,6 @@ for z in recipients:
             text_message += (" \nHave a great day!")
 
             # old google voice sms
-            #message_me(i['number'], text_message)
             m.send_sms(i['number'], text_message)
 
     #print date, high, low, zipcode, sunrise, sunset, day_text, night_text

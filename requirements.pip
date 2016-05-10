@@ -1,0 +1,7 @@
+requests
+twilio
+--allow-external pywapi
+--allow-unverified pywapi
+pywapi
+simplejson
+boto
